@@ -1,5 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import data from '../data/storyData.json';
 
 // Define types for our story data
 export interface StoryData {
@@ -86,11 +87,10 @@ export const StoryDataProvider: React.FC<StoryDataProviderProps> = ({ children }
   // Function to fetch data from a local JSON file
   const fetchLocalData = async () => {
     try {
-      const response = await fetch('/src/data/storyData.json');
-      if (!response.ok) {
-        throw new Error('Failed to fetch story data');
-      }
-      const data = await response.json();
+      // const response = await fetch('/src/data/storyData.json');
+      // if (!response.ok) {
+      //   throw new Error('Failed to fetch story data');
+      // }
       const dataWithRandomQuestions = selectRandomQuestions(data);
       setStoryData(dataWithRandomQuestions);
     } catch (err) {
